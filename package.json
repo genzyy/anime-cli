@@ -1,0 +1,22 @@
+{
+  "name": "anime-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "anime-cli": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^4.1.0",
+    "cli-table3": "^0.6.0",
+    "http": "0.0.1-security",
+    "node-fetch": "^2.6.1"
+  }
+}
