@@ -1,6 +1,6 @@
 {
-  "name": "anime-cli",
-  "version": "1.0.0",
+  "name": "@genzyy/anime-cli",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "genzyy",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
@@ -18,5 +18,14 @@
     "cli-table3": "^0.6.0",
     "http": "0.0.1-security",
     "node-fetch": "^2.6.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/genzyy/anime-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/genzyy/anime-cli/issues"
+  },
+  "homepage": "https://github.com/genzyy/anime-cli#readme"
 }
