@@ -6,6 +6,7 @@
  
  The anime-cli is a commandline app created using javascript modules and an external api which can be found [here](https://jikan.moe/).
  The anime-cli app gives you information about the number of episodes of the anime, if its completed or not and tells you all its movies.
+ You can also visit the npm site for this cli app [here](https://www.npmjs.com/package/@genzyy/anime-cli).
  
  
  ## How to install the commandline app ##
