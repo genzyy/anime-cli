@@ -36,7 +36,7 @@ For example:
 ```
 
 ### Some Useful Notes ###
-The cli app is currently in development and is only mantained by [ME](https://github.com/genzyy) and so the development will be a little slow as I have to do my college work also.
+The cli app is currently in development and is only mantained by [me](https://github.com/genzyy) and so the development will be a little slow as I have to do my college work also.
 Sorry for that!
 But dont worry, I will keep adding new features and argument passing features for a more accurate data fetching.
 Also, I request you while using the cli app try to pass the exact name of the anime for example pass `Boku No Hero` instead of `boku no hero` so as to get the highlighting of the animes which contain the exact names that you have passed in the arguments.
