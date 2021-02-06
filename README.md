@@ -2,6 +2,10 @@
   <h1>anime-cli</h1>
  </div>
  
+ <div align="center">
+  ![image](assets/anime-cli.png)
+ </div>
+ 
  ## What its about ##
  
  The anime-cli is a commandline app created using javascript modules and an external api which can be found [here](https://jikan.moe/).
