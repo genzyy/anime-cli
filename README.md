@@ -36,6 +36,8 @@ For example:
   anime-cli Naruto
 ```
 
+The keyword that you have used to search about the anime, if that keyword matches to any title in the result array them that anime will be highlighted in green color so that it shows that this anime is probably connected to the anime keyword that you have used to search about.
+
 ### Some Useful Notes ###
 The cli app is currently in development and is only mantained by [me](https://github.com/genzyy) and so the development will be a little slow as I have to do my college work also.
 Sorry for that!
