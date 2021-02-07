@@ -9,7 +9,7 @@ const arg = query.split(',');
 //console.log(arg[2]);
 
 var Table = require('cli-table3');
-var table = new Table({ 'head': ['Title', 'Episodes', 'Status'],
+var table = new Table({ 'head': ['Title', 'Episodes', 'Type', 'Status'],
                         'colWidths': [46, 11] });
 
 const chalk = require('chalk');
@@ -52,20 +52,17 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`)
             //console.log('Finished! Time to binge watch');
             status = chalk.cyanBright('Finished');
         }
-        if(item.episodes === 1) {
-          status = chalk.yellow('Movie');
-        }
         //console.log(item.episodes);
         //console.log('---------------------');
 
         table.push(
-          [PTitle(item.title), item.episodes, status]
+          [PTitle(item.title), item.episodes, chalk.yellow(item.type), status]
         )
-        
-        
+
+
     })
 
     console.log(table.toString());
 
-    })
+  })
   .catch(error => console.log(error));
