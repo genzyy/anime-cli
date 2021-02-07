@@ -2,7 +2,7 @@
   <h1>anime-cli</h1>
  </div>
  
-![image](./assets/anime-cli.png)
+![image](./pictures/anime-cli.png)
  
  ## What its about ##
  
