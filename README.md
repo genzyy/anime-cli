@@ -32,6 +32,7 @@ Or if you are using windows:
 
 With the help from:
 * [@MichalNemecek](https://github.com/MichalNemecek)
+
  Added a feature to search anime even in lowercase when passed in the arguments.
 
 ### v1.0.2 ###
