@@ -28,6 +28,12 @@ Or if you are using windows:
 
 ## Change Log ##
 
+### v1.1.1 ###
+
+With the help from:
+* [@MichalNemecek](https://github.com/MichalNemecek)
+ Added a feature to search anime even in lowercase when passed in the arguments.
+
 ### v1.0.2 ###
 
 Thanks to:
