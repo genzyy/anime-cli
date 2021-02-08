@@ -3,10 +3,9 @@
 const fetch = require('node-fetch');
 //const query = "Naruto";
 let query = process.argv;
-query = query.join();
-//console.log(query.split(','));
 const arg = query.split(',');
 //console.log(arg[2]);
+query = query.slice(2).join(' ');
 
 var Table = require('cli-table3');
 var table = new Table({ 'head': ['Title', 'Episodes', 'Type', 'Status'],
@@ -14,9 +13,8 @@ var table = new Table({ 'head': ['Title', 'Episodes', 'Type', 'Status'],
 
 const chalk = require('chalk');
 
-if(arg[2] === 'help') {
-  console.log(chalk.redBright("You just need to type anime and then the actual\nof the anime that you want to search but with \nevery word having the first letter as the \ncapital letter"));
-  console.log(chalk.greenBright("For example: anime Boku No Hero"));
+if(query.includes('--help') || query.includes('-h') || arg.length < 3) {
+  console.log("Usage:\n    anime-cli NAME\n    anime-cli -h\n    anime-cli --help\n\nExamples:\n    anime-cli boku no hero\n    anime-cli naruto");
   return;
 }
 
@@ -37,7 +35,7 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`)
     bunch.map((item) => {
         //console.log(item.title);
 
-        if(item.title.includes(arg[2])) {
+        if(item.title.toLowerCase.includes(query.toLowerCase())) {
           PTitle = chalk.bold.green;
         }
         else {
