@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 const fetch = require("node-fetch");
+const pjson = require("./package.json");
+
 //const query = "Naruto";
 let query = process.argv;
 query = query.join();
@@ -14,16 +16,46 @@ var table = new Table({
   colWidths: [46, 11],
 });
 
+// For font colors
 const chalk = require("chalk");
+const greenText = "\x1b[32m";
+const resetFont = "\x1b[0m";
+const cyanText = "\x1b[36m";
 
-if (arg[2] === "help" || arg[2] === "-h") {
-  console.log(
-    chalk.redBright(
-      "You just need to type anime and then the actual\nof the anime that you want to search but with \nevery word having the first letter as the \ncapital letter"
-    )
-  );
-  console.log(chalk.greenBright("For example: anime Boku No Hero"));
+if (arg[2] === "-help" || arg[2] === "--h") {
+  console.log(`
+NAME
+	${cyanText}anime-cli: command line application to fetch anime details${resetFont}
+
+USAGE
+	${cyanText}anime-cli [ <anime name>  |  arguments ]
+	anime-cli [ <anime name> |  -help  | --h ...]${resetFont}
+
+OPTIONS
+	<anime name>
+		The name of the anime whose information you would
+		like to fetch
+		${greenText}eg: anime-cli Naruto${resetFont}
+	
+	help, --h
+		view this information
+		${greenText}eg: anime-cli -help${resetFont}
+
+	version, --v
+		view the version number of the anime-cli app
+		${greenText}eg: anime-cli -version${resetFont}
+
+DESCRIPION
+	anime-cli is a command line application that can be used to
+	fetch information regarding the user-queried anime, like
+	number of episodes, type of anime and it's airing status.
+	  `);
   return;
+}
+
+if(arg[2] === "-version" || arg[2] === "--v") {
+	console.log(chalk.cyanBright(`anime-cli\nversion: ${pjson.version}\n`))
+	return;
 }
 
 //console.log(table.toString());
