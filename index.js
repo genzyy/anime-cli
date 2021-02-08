@@ -34,17 +34,13 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`)
     //console.log([data])
 
     //console.log(data.results[0]);
-    let bunch = data.results.slice(0, 30);
+    const bunch = data.results.slice(0, 30);
     let status = "";
     let PTitle = "";
 
     if (arg[0] !== undefined) {
       arg[0] = arg[0].toLowerCase();
     }
-
-    let matches = bunch.filter((item) => item.title.toLowerCase().includes(arg[0]));
-    let notMatches = bunch.filter((item) => !item.title.toLowerCase().includes(arg[0]));
-    bunch = matches.concat(notMatches);
 
     bunch.map((item) => {
       //console.log(item.title);
