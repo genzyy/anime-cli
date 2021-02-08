@@ -3,7 +3,7 @@
 const fetch = require('node-fetch');
 //const query = "Naruto";
 let query = process.argv;
-const arg = query.split(',');
+//const arg = query.split(',');
 //console.log(arg[2]);
 query = query.slice(2).join(' ');
 
@@ -13,7 +13,7 @@ var table = new Table({ 'head': ['Title', 'Episodes', 'Type', 'Status'],
 
 const chalk = require('chalk');
 
-if(query.includes('--help') || query.includes('-h') || arg.length < 3) {
+if(query.includes('--help') || query.includes('-h') || process.argv.length < 3) {
   console.log("Usage:\n    anime-cli NAME\n    anime-cli -h\n    anime-cli --help\n\nExamples:\n    anime-cli boku no hero\n    anime-cli naruto");
   return;
 }
@@ -35,7 +35,7 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`)
     bunch.map((item) => {
         //console.log(item.title);
 
-        if(item.title.toLowerCase.includes(query.toLowerCase())) {
+        if(item.title.toLowerCase().includes(query.toLowerCase())) {
           PTitle = chalk.bold.green;
         }
         else {
