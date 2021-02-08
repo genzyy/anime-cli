@@ -3,9 +3,10 @@
 const fetch = require('node-fetch');
 //const query = "Naruto";
 let query = process.argv;
-//const arg = query.split(',');
+//console.log(process.argv[2]);
+query = query.slice(2).join();
+
 //console.log(arg[2]);
-query = query.slice(2).join(' ');
 
 var Table = require('cli-table3');
 var table = new Table({ 'head': ['Title', 'Episodes', 'Type', 'Status'],
@@ -36,6 +37,7 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`)
         //console.log(item.title);
 
         if(item.title.toLowerCase().includes(query.toLowerCase())) {
+
           PTitle = chalk.bold.green;
         }
         else {
