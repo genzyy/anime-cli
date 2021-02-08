@@ -28,6 +28,9 @@ Or if you are using windows:
 
 ## Change Log ##
 
+### v1.1.2 ###
+* Fixed a bug where it threw an error when only `anime-cli` was run.
+
 ### v1.1.1 ###
 
 With the help from:
