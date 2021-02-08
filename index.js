@@ -6,7 +6,7 @@ let query = process.argv.slice(2,process.argv.length);
 query = query.join();
 //console.log(query.split(','));
 const arg = query.split(",");
-//console.log(arg[2]);
+//console.log(0]);
 
 var Table = require("cli-table3");
 var table = new Table({
@@ -16,7 +16,7 @@ var table = new Table({
 
 const chalk = require("chalk");
 
-if (arg[2] === "help" || arg[2] === "-h") {
+if (arg[0] === "help" || arg[0] === "-h") {
   console.log(
     chalk.redBright(
       "You just need to type anime and then the actual\nof the anime that you want to search but with \nevery word having the first letter as the \ncapital letter"
@@ -38,18 +38,18 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`)
     let status = "";
     let PTitle = "";
 
-    if (arg[2] !== undefined) {
-      arg[2] = arg[2].toLowerCase();
+    if (arg[0] !== undefined) {
+      arg[0] = arg[0].toLowerCase();
     }
 
-    let matches = bunch.filter((item) => item.title.toLowerCase().includes(arg[2]));
-    let notMatches = bunch.filter((item) => !item.title.toLowerCase().includes(arg[2]));
+    let matches = bunch.filter((item) => item.title.toLowerCase().includes(arg[0]));
+    let notMatches = bunch.filter((item) => !item.title.toLowerCase().includes(arg[0]));
     bunch = matches.concat(notMatches);
 
     bunch.map((item) => {
       //console.log(item.title);
 
-      if (item.title.toLowerCase().includes(arg[2])) {
+      if (item.title.toLowerCase().includes(arg[0])) {
         PTitle = chalk.bold.green;
       } else {
         PTitle = chalk.bold.white;
