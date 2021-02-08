@@ -14,7 +14,7 @@ var table = new Table({ 'head': ['Title', 'Episodes', 'Type', 'Status'],
 
 const chalk = require('chalk');
 
-if(arg[2] === 'help') {
+if(arg[2] === 'help' || arg[2] === '-h') {
   console.log(chalk.redBright("You just need to type anime and then the actual\nof the anime that you want to search but with \nevery word having the first letter as the \ncapital letter"));
   console.log(chalk.greenBright("For example: anime Boku No Hero"));
   return;
@@ -37,7 +37,7 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`)
     bunch.map((item) => {
         //console.log(item.title);
 
-        if(item.title.includes(arg[2])) {
+        if(item.title.toLowerCase().includes(arg[2].toLowerCase())) {
           PTitle = chalk.bold.green;
         }
         else {
