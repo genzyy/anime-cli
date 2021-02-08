@@ -2,7 +2,7 @@
 
 const fetch = require("node-fetch");
 //const query = "Naruto";
-let query = process.argv;
+let query = process.argv.slice(2,process.argv.length);
 query = query.join();
 //console.log(query.split(','));
 const arg = query.split(",");
