@@ -30,6 +30,7 @@ Or if you are using windows:
 
 ### v1.3.1 ###
 
+* Thanks to [@atul-g](https://github.com/atul-g) for creating a much better help section and adding a version check command.
 * Added a config file which is used for setting limit for the results and to show only the matched results.
 * The config file in Linux/MacOS gets stored at `./config/configstore/@genzyy/anime-cli.json` and generally gets stored at `$CONFIG/package-name/config.json`.
 * An example config would be like 
@@ -44,7 +45,7 @@ Or if you are using windows:
 * To unset the limit run `anime-cli setLimit false`.
 * You can also fetch only the titles which match to your query, for this run `anime-cli onlyMatches true` or to unset it run `anime-cli onlyMatches false`.
 * Also instead of running these commands, you can manually edit the config file and change accordingly.
-* Thanks to [@atul-g](https://github.com/atul-g) for creating a much better help section and adding a version check command.
+
  
 
 ### v1.1.2 ###
