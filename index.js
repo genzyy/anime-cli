@@ -2,21 +2,36 @@
 
 const fetch = require("node-fetch");
 const pjson = require("./package.json");
+const Configstore = require('configstore');
+const treasure = require('./RA.json');
+const list = treasure.list;
 
-//const query = "Naruto";
+const config = new Configstore(pjson.name, {
+  setLimit: false,
+  limit: 100,
+  onlyMatches: false
+})
+
+let limvalue = 100;
 let query = process.argv;
-query = query.join();
-//console.log(query.split(','));
-const arg = query.split(",");
-//console.log(arg[2]);
+let search = ' ';
+if(query.length <= 2) {
+  search = list[Math.floor(Math.random() * list.length)].split(' ').join('_');
+} else {
+  search = query.slice(2,query.length).join('_');
+}
 
-var Table = require("cli-table3");
-var table = new Table({
+
+const arg = query;
+
+
+let Table = require("cli-table3");
+let table = new Table({
   head: ["Title", "Episodes", "Type", "Status"],
   colWidths: [46, 11],
 });
 
-// For font colors
+
 const chalk = require("chalk");
 const greenText = "\x1b[32m";
 const resetFont = "\x1b[0m";
@@ -58,15 +73,38 @@ if(arg[2] === "--version" || arg[2] === "-v") {
 	return;
 }
 
-//console.log(table.toString());
+if(arg.includes('setLimit') && arg.includes('true') ) {
+  config.set('setLimit', true);
+  if(arg[4] === undefined) {
+    console.log('Add the limit value pls');
+  } else {
+    config.set('limit', parseInt(arg[4]));
+  }
+  return;
+}
+else if(arg.includes('setLimit') && arg.includes('false')) {
+  config.set('setLimit', false);
+  return;
+}
 
-fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`)
+if(arg.includes('onlyMatches') && arg.includes('true')) {
+  config.set('onlyMatches', true);
+  return;
+}
+else if (arg.includes('onlyMatches') && arg.includes('false')) {
+  config.set('onlyMatches', false);
+  return;
+}
+
+//let search = '';
+//if ()
+
+
+fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
   .then((response) => response.json())
   .then((data) => {
-    //console.log([data])
-
-    //console.log(data.results[0]);
-    const bunch = data.results;
+    limvalue = config.get('setLimit') ? config.get('limit') : 100;
+    const bunch = data.results.slice(0,limvalue);
     let status = "";
     let PTitle = "";
 
@@ -75,30 +113,55 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`)
     }
 
     bunch.map((item) => {
-      //console.log(item.title);
 
-      if (item.title.toLowerCase().includes(arg[2])) {
-        PTitle = chalk.bold.green;
-      } else {
-        PTitle = chalk.bold.white;
+
+      if(config.get('onlyMatches') == true) {
+        
+  
+        if (item.airing === true) {
+  
+          status = chalk.red("Ongoing");
+        } else if (item.airing === false) {
+  
+          status = chalk.cyanBright("Finished");
+        }
+
+        if (item.title.toLowerCase().includes(arg[2])) {
+          PTitle = chalk.bold.green;
+          table.push([
+            PTitle(item.title),
+            item.episodes,
+            chalk.yellow(item.type),
+            status,
+          ]);
+        }
+  
+  
+       
       }
+      else if(config.get('onlyMatches') == false) {
+        if (item.title.toLowerCase().includes(arg[2])) {
+          PTitle = chalk.bold.green;
+        } else {
+          PTitle = chalk.bold.white;
+        }
 
-      if (item.airing === true) {
-        //console.log('Ongoing');
-        status = chalk.red("Ongoing");
-      } else if (item.airing === false) {
-        //console.log('Finished! Time to binge watch');
-        status = chalk.cyanBright("Finished");
+        if (item.airing === true) {
+  
+          status = chalk.red("Ongoing");
+        } else if (item.airing === false) {
+  
+          status = chalk.cyanBright("Finished");
+        }
+
+        
+        table.push([
+          PTitle(item.title),
+          item.episodes,
+          chalk.yellow(item.type),
+          status,
+        ]);
       }
-      //console.log(item.episodes);
-      //console.log('---------------------');
-
-      table.push([
-        PTitle(item.title),
-        item.episodes,
-        chalk.yellow(item.type),
-        status,
-      ]);
     });
 
     console.log(table.toString());
