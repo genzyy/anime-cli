@@ -22,7 +22,7 @@ const greenText = "\x1b[32m";
 const resetFont = "\x1b[0m";
 const cyanText = "\x1b[36m";
 
-if (arg[2] === "-help" || arg[2] === "--h") {
+if (arg[2] === "--help" || arg[2] === "-h") {
   console.log(`
 NAME
 	${cyanText}anime-cli: command line application to fetch anime details${resetFont}
@@ -53,7 +53,7 @@ DESCRIPION
   return;
 }
 
-if(arg[2] === "-version" || arg[2] === "--v") {
+if(arg[2] === "--version" || arg[2] === "-v") {
 	console.log(chalk.cyanBright(`anime-cli\nversion: ${pjson.version}\n`))
 	return;
 }
