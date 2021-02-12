@@ -9,7 +9,9 @@ const list = treasure.list;
 const config = new Configstore(pjson.name, {
   setLimit: false,
   limit: 100,
-  onlyMatches: false
+  onlyMatches: false,
+  showScore: false,
+  showYear: false
 })
 
 let limvalue = 100;
@@ -26,8 +28,18 @@ const arg = query;
 
 
 let Table = require("cli-table3");
+
+const tableHead = ["Title", "Episodes", "Type", "Status"];
+if (config.get('showScore') == true) {
+  tableHead.splice(1, 0, "Score");
+}
+
+if (config.get('showYear') == true) {
+  tableHead.splice(1, 0, "Year");
+}
+
 let table = new Table({
-  head: ["Title", "Episodes", "Type", "Status"],
+  head: tableHead,
   colWidths: [46, 11],
 });
 
@@ -73,7 +85,7 @@ if(arg[2] === "--version" || arg[2] === "-v") {
 	return;
 }
 
-if(arg.includes('setLimit') && arg.includes('true') ) {
+if(arg.includes('setLimit') && arg[arg.indexOf('setLimit') + 1] === 'true' ) {
   config.set('setLimit', true);
   if(arg[4] === undefined) {
     console.log('Add the limit value pls');
@@ -93,6 +105,32 @@ if(arg.includes('onlyMatches') && arg.includes('true')) {
 }
 else if (arg.includes('onlyMatches') && arg.includes('false')) {
   config.set('onlyMatches', false);
+  return;
+}
+
+if (arg.includes('showScore')) {
+  if(arg[arg.indexOf('showScore') + 1] === 'true' ) {
+    config.set('showScore', true);
+  }
+  else if(rg[arg.indexOf('showScore') + 1] === 'false' ) {
+    config.set('showScore', false);
+  }
+  else {
+    console.log('Allowed value for showScore: [true, false]');
+  }
+  return;
+}
+
+if (arg.includes('showYear')) {
+  if(arg[arg.indexOf('showYear') + 1] === 'true' ) {
+    config.set('showYear', true);
+  }
+  else if(rg[arg.indexOf('showYear') + 1] === 'false' ) {
+    config.set('showYear', false);
+  }
+  else {
+    console.log('Allowed value for showYear: [true, false]');
+  }
   return;
 }
 
@@ -128,12 +166,22 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
 
         if (item.title.toLowerCase().includes(arg[2])) {
           PTitle = chalk.bold.green;
-          table.push([
+          const row = [
             PTitle(item.title),
             item.episodes,
             chalk.yellow(item.type),
             status,
-          ]);
+          ];
+
+          if (config.get('showScore') == true) {
+            row.splice(1, 0, item.score);
+          }
+
+          if (config.get('showYear') == true) {
+            row.splice(1, 0, item.start_date ? item.start_date.split('-')[0] : '');
+          }
+
+          table.push(row);
         }
   
   
@@ -154,13 +202,22 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
           status = chalk.cyanBright("Finished");
         }
 
-        
-        table.push([
+        const row = [
           PTitle(item.title),
           item.episodes,
           chalk.yellow(item.type),
           status,
-        ]);
+        ];
+        
+        if (config.get('showScore')) {
+          row.splice(1, 0, item.score);
+        }
+
+        if (config.get('showYear')) {
+          row.splice(1, 0, item.start_date ? item.start_date.split('-')[0] : '');
+        }
+
+        table.push(row);
       }
     });
 

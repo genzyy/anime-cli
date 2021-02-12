@@ -28,6 +28,11 @@ Or if you are using windows:
 
 ## Change Log ##
 
+
+### v1.3.2 ###
+* You can choose if the fetched titles will have displayed score, for this run `anime-cli showScore true` or to unset it run `anime-cli showScore false`.
+* You can choose if the fetched titles will have displayed year, for this run `anime-cli showYear true` or to unset it run `anime-cli showYear false`.
+
 ### v1.3.1 ###
 
 * Thanks to [@atul-g](https://github.com/atul-g) for creating a much better help section and adding a version check command.
