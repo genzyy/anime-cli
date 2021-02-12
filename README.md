@@ -32,6 +32,7 @@ Or if you are using windows:
 ### v1.3.2 ###
 * You can choose if the fetched titles will have displayed score, for this run `anime-cli showScore true` or to unset it run `anime-cli showScore false`.
 * You can choose if the fetched titles will have displayed year, for this run `anime-cli showYear true` or to unset it run `anime-cli showYear false`.
+* You can sort ascendent or descendent on a (single) field, for this run `anime-cli <search-term> --asc Score` or `anime-cli <search-term> --desc Score`.
 
 ### v1.3.1 ###
 

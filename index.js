@@ -15,7 +15,20 @@ const config = new Configstore(pjson.name, {
 })
 
 let limvalue = 100;
+
+// extract sort info
 let query = process.argv;
+const sortIdx = Object.keys(query).filter(i => query[i].startsWith("--asc") || query[i].startsWith("--desc"))[0];
+let sort;
+if (sortIdx !== undefined) {
+  const sortParts = query.slice(sortIdx, sortIdx + 2);
+  query.splice(sortIdx, 2);
+  sort = {
+    asc: sortParts[0].includes('asc'),
+    field: sortParts[1]
+  };
+} 
+
 let search = ' ';
 if(query.length <= 2) {
   search = list[Math.floor(Math.random() * list.length)].split(' ').join('_');
@@ -150,6 +163,8 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
       arg[2] = arg[2].toLowerCase();
     }
 
+    const rows = [];
+
     bunch.map((item) => {
 
 
@@ -181,7 +196,7 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
             row.splice(1, 0, item.start_date ? item.start_date.split('-')[0] : '');
           }
 
-          table.push(row);
+          rows.push(row);
         }
   
   
@@ -217,9 +232,21 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
           row.splice(1, 0, item.start_date ? item.start_date.split('-')[0] : '');
         }
 
-        table.push(row);
+        rows.push(row);
       }
     });
+
+    if (sort) {
+      const idx = tableHead.indexOf(sort.field);
+
+      if (idx === -1) {
+        console.log('Cannot sort on that field. Available field values are ' + JSON.stringify(tableHead));
+      }
+
+      rows.sort((a, b) => sort.asc ? a[idx] - b[idx] : b[idx] - a[idx]);
+    }
+
+    rows.forEach(r => table.push(r));
 
     console.log(table.toString());
   })
