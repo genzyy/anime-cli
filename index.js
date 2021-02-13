@@ -56,7 +56,7 @@ NAME
 
 USAGE
 	${cyanText}anime-cli [ <anime name>  |  arguments ]
-	anime-cli [ <anime name> |  -help  | --h ...]${resetFont}
+	anime-cli [ <anime name> |  --help  | -h ...]${resetFont}
 
 OPTIONS
 	<anime name>
@@ -64,11 +64,11 @@ OPTIONS
 		like to fetch
 		${greenText}eg: anime-cli Naruto${resetFont}
 	
-	help, --h
+	--help, -h
 		view this information
 		${greenText}eg: anime-cli -help${resetFont}
 
-	version, --v
+	--version, -v
 		view the version number of the anime-cli app
 		${greenText}eg: anime-cli -version${resetFont}
 
