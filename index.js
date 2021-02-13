@@ -66,11 +66,13 @@ OPTIONS
 	
 	--help, -h
 		view this information
-		${greenText}eg: anime-cli -help${resetFont}
+		${greenText}eg: anime-cli --help${resetFont}
+		${greenText}eg: anime-cli -h${resetFont}
 
 	--version, -v
 		view the version number of the anime-cli app
-		${greenText}eg: anime-cli -version${resetFont}
+		${greenText}eg: anime-cli --version${resetFont}
+		${greenText}eg: anime-cli -v${resetFont}
 
 DESCRIPION
 	anime-cli is a command line application that can be used to
