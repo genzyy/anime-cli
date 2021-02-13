@@ -56,7 +56,7 @@ NAME
 
 USAGE
 	${cyanText}anime-cli [ <anime name>  |  arguments ]
-	anime-cli [ <anime name> |  --help  | -h ...]${resetFont}
+	anime-cli [ <anime name> |  -help  | --h ...]${resetFont}
 
 OPTIONS
 	<anime name>

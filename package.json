@@ -1,6 +1,6 @@
 {
   "name": "@genzyy/anime-cli",
-  "version": "1.3.2",
+  "version": "1.3.4",
   "description": "",
   "main": "index.js",
   "bin": {
