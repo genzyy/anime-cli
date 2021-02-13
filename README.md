@@ -3,6 +3,8 @@
  </div>
  
 ![image](./assets/anime-cli.png)
+
+![npm](https://img.shields.io/npm/v/@genzyy/anime-cli?color=pink&style=for-the-badge)
  
  ## What its about ##
  
@@ -32,7 +34,7 @@ Or if you are using windows:
 
 * Thanks to [@atul-g](https://github.com/atul-g) for creating a much better help section and adding a version check command.
 * Added a config file which is used for setting limit for the results and to show only the matched results.
-* The config file in Linux/MacOS gets stored at `./config/configstore/@genzyy/anime-cli.json` and generally gets stored at `$CONFIG/package-name/config.json`.
+* The config file in Linux/MacOS gets stored at `~/.config/configstore/@genzyy/anime-cli.json` and generally gets stored at `$CONFIG/package-name/config.json`.
 * An example config would be like 
 ```json
   {
