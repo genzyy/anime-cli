@@ -32,6 +32,9 @@ Or if you are using windows:
 
 ## Change Log ##
 
+### v1.3.3 ###
+* Fixed a bug where the app wasn't able to run.
+
 ### v1.3.2 ###
 
 * Thanks to [@KennyTheBard](https://github.com/KennyTheBard) for adding the following features.
