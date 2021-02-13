@@ -125,7 +125,7 @@ if (arg.includes('showScore')) {
   if(arg[arg.indexOf('showScore') + 1] === 'true' ) {
     config.set('showScore', true);
   }
-  else if(rg[arg.indexOf('showScore') + 1] === 'false' ) {
+  else if(arg[arg.indexOf('showScore') + 1] === 'false' ) {
     config.set('showScore', false);
   }
   else {
@@ -138,7 +138,7 @@ if (arg.includes('showYear')) {
   if(arg[arg.indexOf('showYear') + 1] === 'true' ) {
     config.set('showYear', true);
   }
-  else if(rg[arg.indexOf('showYear') + 1] === 'false' ) {
+  else if(arg[arg.indexOf('showYear') + 1] === 'false' ) {
     config.set('showYear', false);
   }
   else {
