@@ -32,6 +32,11 @@ Or if you are using windows:
 
 ## Change Log ##
 
+### v1.3.6 ###
+* Added comments to the main js file to know the code better.
+* Fixed some lexical and keyword errors.
+* Added some more recommended animes in `RA.json` so that they get displayed when the user doesnt pass any argument.
+
 ### v1.3.5 ###
 
 * Fixed help message

@@ -1,22 +1,36 @@
 #!/usr/bin/env node
+// The above comment declares the environment that should be used to run the file.
 
 const fetch = require("node-fetch");
+//In react the fetch function is available globally but to use it
+// without react we need to install node-fetch.
+
 const pjson = require("./package.json");
+//To get version and package name.
+
 const Configstore = require('configstore');
+// This package is used to create a user configuration to save the user settings.
+
 const treasure = require('./RA.json');
+// Presaved anime titles for random user searches.
+
 const list = treasure.list;
 
+//Preconfigured or default anime-cli user configuration. 
 const config = new Configstore(pjson.name, {
   setLimit: false,
   limit: 100,
   onlyMatches: false,
   showScore: false,
   showYear: false
-})
+});
 
 let limvalue = 100;
+//getting the values from the arguments passed by the user.
 let query = process.argv;
 let search = ' ';
+
+// Handling random search
 if(query.length <= 2) {
   search = list[Math.floor(Math.random() * list.length)].split(' ').join('_');
 } else {
@@ -26,29 +40,40 @@ if(query.length <= 2) {
 
 const arg = query;
 
+// Table module for displaying the results in a table.
+const Table = require("cli-table3");
 
-let Table = require("cli-table3");
-
+// Configuring the columns of the table.
 const tableHead = ["Title", "Episodes", "Type", "Status"];
+
+// showScore column.
 if (config.get('showScore') == true) {
   tableHead.splice(1, 0, "Score");
 }
 
+// showYear column.
 if (config.get('showYear') == true) {
   tableHead.splice(1, 0, "Year");
 }
 
-let table = new Table({
+// TODO: Add an option for showing mal_id here.
+
+// Structuring the table.
+const table = new Table({
   head: tableHead,
   colWidths: [46, 11],
 });
 
 
+// Applying some colours and predefined vim colours.
 const chalk = require("chalk");
 const greenText = "\x1b[32m";
 const resetFont = "\x1b[0m";
 const cyanText = "\x1b[36m";
 
+
+// if-else condition for the arguments meant for app config.
+// TODO: Add an option to set the show mal_id option.
 if (arg[2] === "--help" || arg[2] === "-h") {
   console.log(`
 NAME
@@ -90,7 +115,7 @@ if(arg[2] === "--version" || arg[2] === "-v") {
 if(arg.includes('setLimit') && arg[arg.indexOf('setLimit') + 1] === 'true' ) {
   config.set('setLimit', true);
   if(arg[4] === undefined) {
-    console.log('Add the limit value pls');
+    console.log('The argument should be used as: setLimit <true/false> limit <number>');
   } else {
     config.set('limit', parseInt(arg[4]));
   }
@@ -101,12 +126,18 @@ else if(arg.includes('setLimit') && arg.includes('false')) {
   return;
 }
 
-if(arg.includes('onlyMatches') && arg.includes('true')) {
-  config.set('onlyMatches', true);
-  return;
-}
-else if (arg.includes('onlyMatches') && arg.includes('false')) {
-  config.set('onlyMatches', false);
+if (arg.includes('onlyMatches')) {
+  if(arg.includes('onlyMatches') && arg.includes('true')) {
+    config.set('onlyMatches', true);
+    return;
+  }
+  else if (arg.includes('onlyMatches') && arg.includes('false')) {
+    config.set('onlyMatches', false);
+    return;
+  }
+  else {
+    console.log('Allowed value for onlyMatches: [true, false]');
+  }
   return;
 }
 
@@ -120,6 +151,8 @@ if (arg.includes('showScore')) {
   else {
     console.log('Allowed value for showScore: [true, false]');
   }
+
+  // TODO: Add a show mal_id argument here.
   return;
 }
 
@@ -136,8 +169,6 @@ if (arg.includes('showYear')) {
   return;
 }
 
-//let search = '';
-//if ()
 
 
 fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
@@ -153,19 +184,17 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
     }
 
     bunch.map((item) => {
-
-
+      
+      // We need to check whether the user filter is set to true or false.
       if(config.get('onlyMatches') == true) {
         
-  
-        if (item.airing === true) {
-  
-          status = chalk.red("Ongoing");
+         if (item.airing === true) {
+           status = chalk.red("Ongoing");
         } else if (item.airing === false) {
-  
           status = chalk.cyanBright("Finished");
         }
 
+        // Converting the fetched title to lowercase for better matching.
         if (item.title.toLowerCase().includes(arg[2])) {
           PTitle = chalk.bold.green;
           //new row for new features
@@ -176,10 +205,12 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
             status,
           ];
 
+          // To check whether the user config has this option set to true.
           if (config.get('showScore') == true) {
             row.splice(1, 0, item.score);
           }
 
+          // To check whether the user config has this option set to true.
           if (config.get('showYear') == true) {
             row.splice(1, 0, item.start_date ? item.start_date.split('-')[0] : '');
           }
@@ -212,10 +243,12 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
           status,
         ];
         
+        // To check whether the user config has this option set to true.
         if (config.get('showScore')) {
           row.splice(1, 0, item.score);
         }
 
+        // To check whether the user config has this option set to true.
         if (config.get('showYear')) {
           row.splice(1, 0, item.start_date ? item.start_date.split('-')[0] : '');
         }
@@ -224,6 +257,7 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
       }
     });
 
+    // Printing the table to the terminal.
     console.log(table.toString());
   })
   .catch((error) => console.log(error));
