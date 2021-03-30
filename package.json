@@ -18,6 +18,7 @@
     "cli-table3": "^0.6.0",
     "configstore": "^5.0.1",
     "http": "0.0.1-security",
+    "jest": "*",
     "node-fetch": "^2.6.1"
   },
   "repository": {
