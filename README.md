@@ -36,6 +36,10 @@ Or if you are using windows:
 
 ## Change Log
 
+### v1.3.8
+
+- Fix a bug where if searched with a two digit number then it gives out error.
+
 ### v1.3.6
 
 - Added comments to the main js file to know the code better.
