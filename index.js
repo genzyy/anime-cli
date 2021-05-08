@@ -37,6 +37,11 @@ if(query.length <= 2) {
   search = query.slice(2,query.length).join('_');
 }
 
+//API returns error if search string is less than 3 characters long
+if (search.length < 3) {
+  console.log('Name has to be at least 3 characters long');
+  return
+}
 
 const arg = query;
 
