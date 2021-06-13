@@ -120,9 +120,18 @@ The keyword that you have used to search about the anime, if that keyword matche
 
 ## Docker Commands to build
 
-- Build: `docker build -t animecli .`
-- Run: `docker run --rm animecli`
-- Run (with command): `docker run --rm animecli node index.js`
+- Build:
+  ```bash
+    docker build -t animecli .
+  ```
+- Run: 
+  ```bash
+    docker run --rm animecli
+  ```
+- Run (with command): 
+  ```bash
+    docker run --rm animecli node index.js
+  ```
 
 ### Some Useful Notes
 
