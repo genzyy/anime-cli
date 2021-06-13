@@ -27,6 +27,10 @@ If you are using mac or linux:
 ```bash
   sudo npm install -g @genzyy/anime-cli
 ```
+Or 
+```bash
+  sudo yarn global add @genzyy/anime-cli
+```
 
 Or if you are using windows:
 
