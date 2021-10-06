@@ -11,10 +11,8 @@ const pjson = require('./package.json');
 const Configstore = require('configstore');
 // This package is used to create a user configuration to save the user settings.
 
-const treasure = require('./RA.json');
 // Presaved anime titles for random user searches.
-
-const list = treasure.list;
+const list = require('./RA.json')
 
 //Preconfigured or default anime-cli user configuration.
 const config = new Configstore(pjson.name, {
