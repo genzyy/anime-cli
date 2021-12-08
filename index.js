@@ -12,7 +12,7 @@ const Configstore = require('configstore');
 // This package is used to create a user configuration to save the user settings.
 
 // Presaved anime titles for random user searches.
-const list = require('./RA.json')
+const list = require('./RA.json');
 
 //Preconfigured or default anime-cli user configuration.
 const config = new Configstore(pjson.name, {
@@ -36,12 +36,6 @@ if (query.length <= 2) {
 }
 
 //API returns error if search string is less than 3 characters long
-if (search.length < 3) {
-  console.log(
-    'Name has to be at least 3 characters long or you might have entered a two digit number!'
-  );
-  return;
-}
 
 let arg = query;
 
@@ -80,7 +74,7 @@ const cyanText = '\x1b[36m';
 
 // if-else condition for the arguments meant for app config.
 // TODO: Add an option to set the show mal_id option.
-if (arg[2] === '--help' || arg[2] === '-h') {
+if (arg[2] === '-h' || arg[2] === '--help') {
   console.log(`
 NAME
 	${cyanText}anime-cli: command line application to fetch anime details${resetFont}
@@ -115,6 +109,13 @@ DESCRIPION
 
 if (arg[2] === '--version' || arg[2] === '-v') {
   console.log(chalk.cyanBright(`anime-cli\nversion: ${pjson.version}\n`));
+  return;
+}
+
+if (search.length < 3) {
+  console.log(
+    'Name has to be at least 3 characters long or you might have entered a two digit number!'
+  );
   return;
 }
 
