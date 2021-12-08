@@ -27,7 +27,9 @@ If you are using mac or linux:
 ```bash
   sudo npm install -g @genzyy/anime-cli
 ```
-Or 
+
+Or
+
 ```bash
   sudo yarn global add @genzyy/anime-cli
 ```
@@ -39,6 +41,11 @@ Or if you are using windows:
 ```
 
 ## Change Log
+
+### v1.4.0
+
+- Fix `-h` argument not working because of early constraint checking on arguments.
+- Upgrade to v1.4.0.
 
 ### v1.3.8
 
@@ -124,11 +131,11 @@ The keyword that you have used to search about the anime, if that keyword matche
   ```bash
     docker build -t animecli .
   ```
-- Run: 
+- Run:
   ```bash
     docker run --rm animecli
   ```
-- Run (with command): 
+- Run (with command):
   ```bash
     docker run --rm animecli node index.js
   ```
