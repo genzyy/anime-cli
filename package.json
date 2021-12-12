@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/genzyy/anime-cli/issues"
   },
-  "homepage": "https://github.com/genzyy/anime-cli#readme"
+  "homepage": "https://github.com/genzyy/anime-cli#readme",
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
 }
