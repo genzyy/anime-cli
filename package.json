@@ -1,33 +1,34 @@
 {
-  "name": "@genzyy/anime-cli",
-  "version": "1.4.0",
-  "description": "",
-  "main": "index.js",
-  "bin": {
-    "anime-cli": "index.js"
-  },
-  "scripts": {
-    "test": "jest"
-  },
-  "keywords": [],
-  "author": "genzyy",
-  "license": "ISC",
-  "dependencies": {
-    "chalk": "^4.1.0",
-    "cli-table3": "^0.6.0",
-    "configstore": "^5.0.1",
-    "http": "0.0.1-security",
-    "node-fetch": "^2.6.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/genzyy/anime-cli.git"
-  },
-  "bugs": {
-    "url": "https://github.com/genzyy/anime-cli/issues"
-  },
-  "homepage": "https://github.com/genzyy/anime-cli#readme",
-  "devDependencies": {
-    "prettier": "^2.5.1"
-  }
+	"name": "@genzyy/anime-cli",
+	"version": "1.4.0",
+	"description": "",
+	"main": "index.js",
+	"bin": {
+		"anime-cli": "index.js"
+	},
+	"scripts": {
+		"test": "jest",
+		"prettify": "prettier --write ."
+	},
+	"keywords": [],
+	"author": "genzyy",
+	"license": "ISC",
+	"dependencies": {
+		"chalk": "^4.1.0",
+		"cli-table3": "^0.6.0",
+		"configstore": "^5.0.1",
+		"http": "0.0.1-security",
+		"node-fetch": "^2.6.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/genzyy/anime-cli.git"
+	},
+	"bugs": {
+		"url": "https://github.com/genzyy/anime-cli/issues"
+	},
+	"homepage": "https://github.com/genzyy/anime-cli#readme",
+	"devDependencies": {
+		"prettier": "^2.5.1"
+	}
 }

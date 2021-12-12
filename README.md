@@ -77,9 +77,9 @@ Or if you are using windows:
 
 ```json
 {
-  "setLimit": false,
-  "limit": 10,
-  "onlyMatches": false
+	"setLimit": false,
+	"limit": 10,
+	"onlyMatches": false
 }
 ```
 
