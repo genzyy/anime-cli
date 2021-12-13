@@ -1,11 +1,29 @@
+// module.exports = {
+// 	root: true,
+// 	rules: {
+// 		'no-unused-expressions': 2,
+// 		semi: ['error', 'always'],
+// 		quotes: ['error', 'single']
+// 	},
+// 	extends: 'eslint:recommended',
+// 	plugins: []
+// };
+
 module.exports = {
 	root: true,
-	files: ['*.js'],
+	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+	parser: '@typescript-eslint/parser',
+	parserOptions: { project: ['./tsconfig.json'] },
+	plugins: ['@typescript-eslint'],
 	rules: {
-		semi: ['error', 'always'],
-		quotes: ['error', 'single'],
-		'no-unused-expressions': 'error'
+		'@typescript-eslint/strict-boolean-expressions': [
+			2,
+			{
+				allowString: false,
+				allowNumber: false
+			}
+		],
+		'no-unused-vars': 'error'
 	},
-	extends: 'eslint:recommended',
-	plugins: []
+	ignorePatterns: ['src/**/*.test.ts', 'src/frontend/generated/*']
 };

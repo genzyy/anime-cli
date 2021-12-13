@@ -260,7 +260,6 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
 
 		// Printing the table to the terminal.
 		console.log(table.toString());
-
 		const link = chalk.blueBright('https://git.io/JDcSO');
 
 		console.log(`Having some issues with the app? Report here: ${link}`);
