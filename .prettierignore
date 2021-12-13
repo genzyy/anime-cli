@@ -1,0 +1,6 @@
+.github/
+dist/
+.cache/
+package.json
+package-lock.json
+.prettierrc
