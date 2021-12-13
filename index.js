@@ -265,3 +265,5 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
 		console.log(`Having some issues with the app? Report here: ${link}`);
 	})
 	.catch((error) => console.log(error));
+
+// add pre-commit hook to the project.
