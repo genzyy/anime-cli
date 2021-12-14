@@ -58,8 +58,6 @@ if (config.get('showYear') == true) {
 	tableHead.splice(1, 0, 'Year');
 }
 
-// TODO: Add an option for showing mal_id here.
-
 // Structuring the table.
 const table = new Table({
 	head: tableHead,
@@ -73,7 +71,6 @@ const resetFont = '\x1b[0m';
 const cyanText = '\x1b[36m';
 
 // if-else condition for the arguments meant for app config.
-// TODO: Add an option to set the show mal_id option.
 if (arg[2] === '-h' || arg[2] === '--help') {
 	console.log(`
 NAME
@@ -104,19 +101,19 @@ DESCRIPION
 	fetch information regarding the user-queried anime, like
 	number of episodes, type of anime and it's airing status.
 	  `);
-	return;
+	process.exit();
 }
 
 if (arg[2] === '--version' || arg[2] === '-v') {
 	console.log(chalk.cyanBright(`anime-cli\nversion: ${pjson.version}\n`));
-	return;
+	process.exit();
 }
 
 if (search.length < 3) {
 	console.log(
 		'Name has to be at least 3 characters long or you might have entered a two digit number!'
 	);
-	return;
+	process.exit();
 }
 
 if (arg.includes('setLimit') && arg[arg.indexOf('setLimit') + 1] === 'true') {
@@ -128,23 +125,23 @@ if (arg.includes('setLimit') && arg[arg.indexOf('setLimit') + 1] === 'true') {
 	} else {
 		config.set('limit', parseInt(arg[4]));
 	}
-	return;
+	process.exit();
 } else if (arg.includes('setLimit') && arg.includes('false')) {
 	config.set('setLimit', false);
-	return;
+	process.exit();
 }
 
 if (arg.includes('onlyMatches')) {
 	if (arg.includes('onlyMatches') && arg.includes('true')) {
 		config.set('onlyMatches', true);
-		return;
+		process.exit();
 	} else if (arg.includes('onlyMatches') && arg.includes('false')) {
 		config.set('onlyMatches', false);
-		return;
+		process.exit();
 	} else {
 		console.log('Allowed value for onlyMatches: [true, false]');
 	}
-	return;
+	process.exit();
 }
 
 if (arg.includes('showScore')) {
@@ -155,9 +152,7 @@ if (arg.includes('showScore')) {
 	} else {
 		console.log('Allowed value for showScore: [true, false]');
 	}
-
-	// TODO: Add a show mal_id argument here.
-	return;
+	process.exit();
 }
 
 if (arg.includes('showYear')) {
@@ -168,13 +163,19 @@ if (arg.includes('showYear')) {
 	} else {
 		console.log('Allowed value for showYear: [true, false]');
 	}
-	return;
+	process.exit();
 }
+
 
 fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
 	.then((response) => response.json())
 	.then((data) => {
 		limvalue = config.get('setLimit') ? config.get('limit') : 100;
+		if (arg[3] !== undefined && typeof arg[3] === 'string' && !isNaN(parseInt(arg[3]))) {
+			if(parseInt(arg[3]) <= 100) {
+				limvalue = parseInt(arg[3]);
+			}
+		}
 		const bunch = data.results.slice(0, limvalue);
 		let status = '';
 		let PTitle = '';
