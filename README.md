@@ -42,6 +42,18 @@ Or if you are using windows:
 
 ## Change Log
 
+### v1.4.1
+Most of the changes in this version focus on the development side and improving the code in general but there is one feature that has been added now for limiting the fetched results.
+
+- Limit the fetched results for any anime title by passing the number of results you want (should be between 1 and 100),
+
+```bash
+anime-cli <anime-title> <number>
+```
+
+- Use of non-functional returns has been droped and instead we are using `process.exit()` to quit the process.
+- `eslint` and `prettier` is now being used for making the code better and linting the files.
+- Using strict `eslint` rules for better programming.
 ### v1.4.0
 
 - Fix `-h` argument not working because of early constraint checking on arguments.
