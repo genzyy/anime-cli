@@ -9,7 +9,8 @@ Most of the changes in this version focus on the development side and improving 
 ```bash
 anime-cli <anime-title> <number>
 ```
-- `NOTE`: As of now, not passing any anime-title gives out an error (you can try that)  and I am aiming to fix it in the next version which will be released soon.
+
+- `NOTE`: As of now, not passing any anime-title gives out an error (you can try that) and I am aiming to fix it in the next version which will be released soon.
 
 - Use of non-functional returns has been droped and instead we are using `process.exit()` to quit the process.
 - `eslint` and `prettier` is now being used for making the code better and linting the files.
