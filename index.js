@@ -58,8 +58,6 @@ if (config.get('showYear') == true) {
 	tableHead.splice(1, 0, 'Year');
 }
 
-// TODO: Add an option for showing mal_id here.
-
 // Structuring the table.
 const table = new Table({
 	head: tableHead,
@@ -73,7 +71,6 @@ const resetFont = '\x1b[0m';
 const cyanText = '\x1b[36m';
 
 // if-else condition for the arguments meant for app config.
-// TODO: Add an option to set the show mal_id option.
 if (arg[2] === '-h' || arg[2] === '--help') {
 	console.log(`
 NAME
@@ -173,6 +170,9 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
 	.then((response) => response.json())
 	.then((data) => {
 		limvalue = config.get('setLimit') ? config.get('limit') : 100;
+		if (arg[3] !== undefined && typeof arg[3] === 'string' && !isNaN(parseInt(arg[3]))) {
+			limvalue = parseInt(arg[3]);
+		}
 		const bunch = data.results.slice(0, limvalue);
 		let status = '';
 		let PTitle = '';
