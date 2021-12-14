@@ -166,13 +166,16 @@ if (arg.includes('showYear')) {
 	process.exit();
 }
 
-
 fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
 	.then((response) => response.json())
 	.then((data) => {
 		limvalue = config.get('setLimit') ? config.get('limit') : 100;
-		if (arg[3] !== undefined && typeof arg[3] === 'string' && !isNaN(parseInt(arg[3]))) {
-			if(parseInt(arg[3]) <= 100) {
+		if (
+			arg[3] !== undefined &&
+			typeof arg[3] === 'string' &&
+			!isNaN(parseInt(arg[3]))
+		) {
+			if (parseInt(arg[3]) <= 100) {
 				limvalue = parseInt(arg[3]);
 			}
 		}

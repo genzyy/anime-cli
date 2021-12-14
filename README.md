@@ -40,8 +40,6 @@ Or if you are using windows:
   npm install -g @genzyy/anime-cli
 ```
 
-
-
 ## Usage
 
 Now that you have installed the app, you can run anime-cli in your terminal or cmd and it will show you recent animes and their episodes and airing status.

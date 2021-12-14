@@ -1,6 +1,7 @@
 # Change Log
 
 ### v1.4.1
+
 Most of the changes in this version focus on the development side and improving the code in general but there is one feature that has been added now for limiting the fetched results.
 
 - Limit the fetched results for any anime title by passing the number of results you want (should be between 1 and 100),
@@ -14,6 +15,7 @@ anime-cli <anime-title> <number>
 - Using strict `eslint` rules for better programming.
 <hr>
 <br />
+
 ### v1.4.0
 
 - Fix `-h` argument not working because of early constraint checking on arguments.
@@ -85,6 +87,7 @@ With the help from:
 - [@MichalNemecek](https://github.com/MichalNemecek)
 
 Added a feature to search anime even in lowercase when passed in the arguments.
+
 <hr>
 <br />
 
@@ -95,5 +98,6 @@ Thanks to:
 - [@Gamecube762](https://github.com/Gamecube762)
 
 For adding 'type' section for a better sorting of movies and TV shows.
+
 <hr>
 <br />
