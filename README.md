@@ -57,6 +57,10 @@ For example:
 
 The keyword that you have used to search about the anime, if that keyword matches to any title in the result array them that anime will be highlighted in green color so that it shows that this anime is probably connected to the anime keyword that you have used to search about.
 
+## Configuration and contributing
+
+Check out the [official wiki](https://github.com/genzyy/anime-cli/wiki).
+
 ## Docker Commands to build
 
 - Build:
