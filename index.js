@@ -61,7 +61,7 @@ if (config.get('showYear') == true) {
 // Structuring the table.
 const table = new Table({
 	head: tableHead,
-	colWidths: [46, 11]
+	colWidths: [60, 15, 15, 15]
 });
 
 // Applying some colours and predefined vim colours.
