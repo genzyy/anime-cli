@@ -1,5 +1,9 @@
 # Change Log
 
+### v1.4.5
+
+- Reduced dependency on `chalk` npm package.
+
 ### v1.4.1
 
 Most of the changes in this version focus on the development side and improving the code in general but there is one feature that has been added now for limiting the fetched results.
