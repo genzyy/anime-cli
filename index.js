@@ -44,6 +44,7 @@ let arg = query;
 
 // Table module for displaying the results in a table.
 const Table = require('cli-table3');
+const colors = require('./colors');
 
 // Configuring the columns of the table.
 const tableHead = ['Title', 'Episodes', 'Type', 'Status'];
@@ -66,35 +67,32 @@ const table = new Table({
 
 // Applying some colours and predefined vim colours.
 const chalk = require('chalk');
-const greenText = '\x1b[32m';
-const resetFont = '\x1b[0m';
-const cyanText = '\x1b[36m';
 
 // if-else condition for the arguments meant for app config.
 if (arg[2] === '-h' || arg[2] === '--help') {
 	console.log(`
 NAME
-	${cyanText}anime-cli: command line application to fetch anime details${resetFont}
+	${colors.cyan}anime-cli: command line application to fetch anime details${colors.reset}
 
 USAGE
-	${cyanText}anime-cli [ <anime name>  |  arguments ]
-	anime-cli [ <anime name> |  -help  | --h ...]${resetFont}
+	${colors.cyan}anime-cli [ <anime name>  |  arguments ]
+	anime-cli [ <anime name> |  -help  | --h ...]${colors.reset}
 
 OPTIONS
 	<anime name>
 		The name of the anime whose information you would
 		like to fetch
-		${greenText}eg: anime-cli Naruto${resetFont}
+		${colors.green}eg: anime-cli Naruto${colors.reset}
 	
 	--help, -h
 		view this information
-		${greenText}eg: anime-cli --help${resetFont}
-		${greenText}eg: anime-cli -h${resetFont}
+		${colors.green}eg: anime-cli --help${colors.reset}
+		${colors.green}eg: anime-cli -h${colors.reset}
 
 	--version, -v
 		view the version number of the anime-cli app
-		${greenText}eg: anime-cli --version${resetFont}
-		${greenText}eg: anime-cli -v${resetFont}
+		${colors.green}eg: anime-cli --version${colors.reset}
+		${colors.green}eg: anime-cli -v${colors.reset}
 
 DESCRIPION
 	anime-cli is a command line application that can be used to
@@ -105,7 +103,9 @@ DESCRIPION
 }
 
 if (arg[2] === '--version' || arg[2] === '-v') {
-	console.log(chalk.cyanBright(`anime-cli\nversion: ${pjson.version}\n`));
+	console.log(
+		`${colors.green}anime-cli\nversion: ${pjson.version}\n${colors.reset}`
+	);
 	process.exit();
 }
 
@@ -192,9 +192,9 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
 			// We need to check whether the user filter is set to true or false.
 			if (config.get('onlyMatches') == true) {
 				if (item.airing === true) {
-					status = chalk.red('Ongoing');
+					status = `${colors.red}Ongoing${colors.reset}`;
 				} else if (item.airing === false) {
-					status = chalk.cyanBright('Finished');
+					status = `${colors.blue}Finished${colors.reset}`;
 				}
 
 				// Converting the fetched title to lowercase for better matching.
@@ -232,15 +232,15 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
 				}
 
 				if (item.airing === true) {
-					status = chalk.red('Ongoing');
+					status = `${colors.red}Ongoing${colors.reset}`;
 				} else if (item.airing === false) {
-					status = chalk.cyanBright('Finished');
+					status = `${colors.blue}Finished${colors.reset}`;
 				}
 
 				const row = [
 					PTitle(item.title),
 					item.episodes,
-					chalk.yellow(item.type),
+					`${colors.yellow}${item.type}${colors.reset}`,
 					status
 				];
 
