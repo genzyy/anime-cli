@@ -1,5 +1,10 @@
 # Change Log
 
+### v1.5.0
+
+- Fixed a bug where it didn't show any results when no argument is passed.
+- It now shows anime titles randomly chosen from a list and searched on the database.
+
 ### v1.4.5
 
 - Reduced dependency on `chalk` npm package.
