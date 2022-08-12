@@ -30,7 +30,9 @@ let search = ' ';
 
 // Handling random search
 if (query.length <= 2) {
-	search = list[Math.floor(Math.random() * list.length)].split(' ').join('_');
+	console.log('yes');
+	search = list[parseInt(Math.random() * list.length)];
+	console.log(search);
 } else {
 	search = query.slice(2, query.length).join('_');
 }
@@ -39,6 +41,10 @@ if (query.length <= 2) {
 
 let arg = query;
 
+// if (arg.length < 3) {
+// 	search = list[parseInt(Math.random() * list.length)];
+// 	console.log(search);
+// }
 //arg.forEach(a => a.toString());
 //console.log(arg);
 
