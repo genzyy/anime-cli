@@ -172,7 +172,7 @@ if (arg.includes('showYear')) {
 	process.exit();
 }
 
-fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
+fetch(`https://api.jikan.moe/v4/anime?q=${search}`)
 	.then((response) => response.json())
 	.then((data) => {
 		limvalue = config.get('setLimit') ? config.get('limit') : 100;
@@ -185,7 +185,7 @@ fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`)
 				limvalue = parseInt(arg[3]);
 			}
 		}
-		const bunch = data.results.slice(0, limvalue);
+		const bunch = data.data.slice(0, limvalue);
 		let status = '';
 		let PTitle = '';
 
