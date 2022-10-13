@@ -1,5 +1,9 @@
 # Change Log
 
+### v1.5.5
+
+- Thanks to [@mqhashim](https://github.com/mqhashim), for bumping up the [Jikan API](https://jikan.moe/) version to v4.
+
 ### v1.5.0
 
 - Fixed a bug where it didn't show any results when no argument is passed.
