@@ -259,7 +259,7 @@ fetch(`https://api.jikan.moe/v4/anime?q=${search}`)
 			}
 		});
 
-		// Printing the table to the terminal.
+		// Printing table to terminal.
 		console.log(table.toString());
 		const link = chalk.blueBright('https://git.io/JDcSO');
 
