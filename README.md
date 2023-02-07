@@ -15,6 +15,8 @@ The anime-cli is a commandline app created using javascript modules and an exter
 The anime-cli app gives you information about the number of episodes of the anime, if its completed or not and tells you all its movies.
 You can also visit the npm site for this cli app [here](https://www.npmjs.com/package/@genzyy/anime-cli).
 
+PS: You can check out my other similar project written in rust here: https://github.com/genzyy/anime_rs
+
 ## How to install the commandline app
 
 As the app is a npm package you first need to install [NodeJS](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/get-npm) as these are the requirements for this app.
