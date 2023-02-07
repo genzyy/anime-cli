@@ -30,9 +30,7 @@ let search = ' ';
 
 // Handling random search
 if (query.length <= 2) {
-	console.log('yes');
 	search = list[parseInt(Math.random() * list.length)];
-	console.log(search);
 } else {
 	search = query.slice(2, query.length).join('_');
 }
@@ -40,13 +38,6 @@ if (query.length <= 2) {
 //API returns error if search string is less than 3 characters long
 
 let arg = query;
-
-// if (arg.length < 3) {
-// 	search = list[parseInt(Math.random() * list.length)];
-// 	console.log(search);
-// }
-//arg.forEach(a => a.toString());
-//console.log(arg);
 
 // Table module for displaying the results in a table.
 const Table = require('cli-table3');
